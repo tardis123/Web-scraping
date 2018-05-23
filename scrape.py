@@ -45,6 +45,10 @@ def scrape_main():
             smallest.append(f"{h[:pos]}{'FT'}")
             biggest.append (f"{h[pos+1:]}")
 
+    if browser is not None:
+        # Minimize open browser windows
+        browser.quit()
+
     return (locations, location_url, smallest, biggest)
 
 def scrape_reports():
@@ -75,6 +79,10 @@ def scrape_reports():
                 # Grab air temperature
                 if re.search(air,m):
                     air_temp.append(x.get_text())
+
+    if browser is not None:
+        # Minimize open browser windows
+        browser.quit()
 
     return (water_temp, air_temp)
     
